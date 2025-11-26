@@ -109,6 +109,14 @@ public class Startup
             endpoints.MapGet("/", () => Results.Json(new Home())).AllowAnonymous().WithTags("Home");
             #endregion
 
+            #region Meu Endpoint Personalizado
+            endpoints.MapGet("/sobre", () => Results.Json(new {
+            Projeto = "Trabalhando com ASP.NET Minimal APIs",
+            DataModificacao = "2025",
+            Descricao = "Este projeto foi customizado levemente para testar como parte do desafio DIO"
+            })).AllowAnonymous().WithTags("Home");
+            #endregion
+
             #region Administradores
             string GerarTokenJwt(Administrador administrador){
                 if(string.IsNullOrEmpty(key)) return string.Empty;
